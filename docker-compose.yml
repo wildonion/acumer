@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  acumer-http:
+    container_name: acumer-http
+    image: docker.yourdomain.com/acumer-http
+    build:
+      context: ./
+      dockerfile: ./infra/docker/acumer-http/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "2346:2344"
+    volumes:
+      - ./assets:/app/assets:ro
+      - ./infra/logs:/app/logs:rw
